@@ -1,6 +1,18 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@api/*": ["src/libs/api/*"],
+      "@styles/*": ["src/libs/styles/*"],
+      "@components/*": ["src/libs/components/*"],
+      "@providers/*": ["src/libs/providers/*"],
+      "@enums/*": ["src/libs/enums/*"],
+      "@types/*": ["src/libs/types/*"],
+      "@screens/*": ["src/app/screens/*"],
+      "@navigations/*": ["src/app/navigations/*"]
+    }
   }
 }
