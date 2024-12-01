@@ -10,12 +10,12 @@ export const FormText = styled.Text`
   fontsize: 16px;
 `;
 
-export const Input = styled.TextInput`
-  border: 2px solid;
-  border-radius: 4px;
-  width: 100%;
-  padding-left: 8px;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
+export const SelectArea = styled.View`
+  max-width: 100px;
+  height: 25px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 8px;
+  border-color: #d9d9d9;
+  background-color: white;
 `;

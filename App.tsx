@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { NavigationContainer } from '@react-navigation/native';
 import { Routes } from '@navigations/Routes';
 import { AuthProvider } from '@providers/AuthProvider';
+import { SnackbarProvider } from '@providers/SnackbarProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,7 +20,9 @@ export default function App() {
       <NavigationContainer>
         <AuthProvider>
           <ThemeProvider>
-            <Routes />
+            <SnackbarProvider>
+              <Routes />
+            </SnackbarProvider>
           </ThemeProvider>
         </AuthProvider>
       </NavigationContainer>

@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RoutesEnum } from '@enums/routes';
+import { RootStackParamList } from '@navigations/Records';
 
 interface AuthContextProps {
   userName: string | null;
@@ -14,16 +15,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [userName, setUserName] = useState<string | null>(null);
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const login = (name: string) => {
     setUserName(name);
-    navigation.navigate(RoutesEnum.HOME);
   };
 
   const logout = () => {
     setUserName(null);
-    navigation.navigate(RoutesEnum.LOGIN);
   };
 
   return (

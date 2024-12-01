@@ -18,7 +18,7 @@ export const Routes: React.FC = () => {
           options={{ headerShown: false }}
         />
       ) : (
-        <Stack.Screen name={RoutesEnum.HOME}>
+        <Stack.Screen name={RoutesEnum.MAIN}>
           {() => (
             <Drawer.Navigator
               screenOptions={{

@@ -10,9 +10,10 @@
       "@components/*": ["src/libs/components/*"],
       "@providers/*": ["src/libs/providers/*"],
       "@enums/*": ["src/libs/enums/*"],
-      "@types/*": ["src/libs/types/*"],
+      "@types/*": ["src/libs/types/*.ts"],
       "@screens/*": ["src/app/screens/*"],
-      "@navigations/*": ["src/app/navigations/*"]
+      "@navigations/*": ["src/app/navigations/*"],
+      "@hooks/*": ["src/libs/hooks/*"]
     }
   }
 }
