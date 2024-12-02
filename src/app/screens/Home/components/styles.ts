@@ -105,3 +105,25 @@ export const ModalButtonCancelText = styled.Text`
   font-size: 16px;
   font-weight: bold;
 `;
+
+export const FormContainer = styled.View`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+`;
+
+export const DrawerButton = styled.TouchableOpacity`
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #eb6625;
+  align-items: center;
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+`;
+
+export const DrawerButtonText = styled.Text`
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+`;

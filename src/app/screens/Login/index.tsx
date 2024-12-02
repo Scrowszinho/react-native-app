@@ -5,6 +5,7 @@ import { newLoginForm, NewLoginFormType } from './schema';
 import { RhfInput } from '@components/RhfInput';
 import { Text } from 'react-native';
 import { useAuth } from '@providers/AuthProvider';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Login: React.FC = () => {
   const {
@@ -22,7 +23,11 @@ export const Login: React.FC = () => {
   const sendLogin = async () => {
     const shouldGo = await trigger();
     if (!shouldGo) return;
-    login(getValues('userName'));
+    try {
+      const name = getValues('userName');
+      await AsyncStorage.setItem('USER_NAME', name);
+      login(name);
+    } catch (err) {}
   };
 
   return (

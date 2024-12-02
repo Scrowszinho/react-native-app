@@ -17,6 +17,8 @@ import { NewOptionFormType } from './schema';
 import { useEffect, useState } from 'react';
 import { Pagination } from '@components/Pagination';
 import { View } from 'react-native';
+import { BottomDrawerForm } from './components/BottomDrawerForm';
+import { Loading } from '@components/Loading';
 
 export const Home: React.FC = () => {
   const { control, watch, setValue } = useForm<NewOptionFormType>({
@@ -25,6 +27,7 @@ export const Home: React.FC = () => {
     },
   });
   const [page, setPage] = useState(1);
+  const [openDrawer, setOpenDrawer] = useState(false);
   const limit = watch('option');
 
   const { data, isLoading, refetch } = useGetUsers({
@@ -74,26 +77,34 @@ export const Home: React.FC = () => {
           </View>
         </RowTitle>
       </ContainerTitle>
-      <FlatList
-        data={data?.clients ?? []}
-        ItemSeparatorComponent={ItemSeparators}
-        style={{ paddingTop: 12 }}
-        ListFooterComponent={
-          <ListFooter>
-            <FooterAddButton>
-              <FooterAddButtonText>Criar cliente</FooterAddButtonText>
-            </FooterAddButton>
-            <Pagination
-              page={page}
-              count={data?.totalPages ? data.totalPages * limit : 0}
-              limit={limit}
-              onPageChange={(page) => setPage(page)}
-            />
-          </ListFooter>
-        }
-        renderItem={(item) => (
-          <HomeCard refetch={refetch} data={item.item} key={item.item.id} />
-        )}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <FlatList
+          data={data?.clients ?? []}
+          ItemSeparatorComponent={ItemSeparators}
+          style={{ paddingTop: 12 }}
+          ListFooterComponent={
+            <ListFooter>
+              <FooterAddButton onPress={() => setOpenDrawer(true)}>
+                <FooterAddButtonText>Criar cliente</FooterAddButtonText>
+              </FooterAddButton>
+              <Pagination
+                page={page}
+                count={data?.totalPages ? data.totalPages * limit : 0}
+                limit={limit}
+                onPageChange={(page) => setPage(page)}
+              />
+            </ListFooter>
+          }
+          renderItem={(item) => (
+            <HomeCard refetch={refetch} data={item.item} key={item.item.id} />
+          )}
+        />
+      )}
+      <BottomDrawerForm
+        isOpen={openDrawer}
+        onClose={(confirm) => setOpenDrawer(false)}
       />
     </Container>
   );

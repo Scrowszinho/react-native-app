@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { ModalConfirm } from './ModalConfirm';
 import { useDeleteNewUser } from '@api/users';
 import useSnackbar from '@hooks/useSnackbar';
+import { BottomDrawerForm } from './BottomDrawerForm';
 
 type HomeCardProps = {
   data: TUser;
@@ -14,6 +15,7 @@ type HomeCardProps = {
 
 export const HomeCard: React.FC<HomeCardProps> = ({ data, refetch }) => {
   const [openModal, setOpenModal] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
   const { mutate } = useDeleteNewUser();
   const Snackbar = useSnackbar();
   const sendToDelete = () => {
@@ -35,7 +37,7 @@ export const HomeCard: React.FC<HomeCardProps> = ({ data, refetch }) => {
         <TouchableOpacity>
           <AntDesign name='plus' size={24} color='black' />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setOpenDrawer(true)}>
           <Octicons name='pencil' size={24} color='black' />
         </TouchableOpacity>
         <TouchableOpacity>
@@ -55,6 +57,11 @@ export const HomeCard: React.FC<HomeCardProps> = ({ data, refetch }) => {
           if (confirm) sendToDelete();
           setOpenModal(false);
         }}
+      />
+      <BottomDrawerForm
+        isOpen={openDrawer}
+        data={data}
+        onClose={(confirm) => setOpenDrawer(false)}
       />
     </Card>
   );

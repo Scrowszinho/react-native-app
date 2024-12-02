@@ -31,3 +31,14 @@ export type TUseDeleteUser = () => UseMutationResult<
   number,
   unknown
 >;
+
+export type TPatchUser = (params: 
+  {id: number, data: TNewUser}
+) => Promise<void>;
+
+export type TUsePatchUser = () => UseMutationResult<
+  void,
+  Error,
+  {id: number, data: TNewUser},
+  unknown
+>;

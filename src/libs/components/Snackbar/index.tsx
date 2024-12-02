@@ -92,7 +92,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 16,
     borderRadius: 8,
-    elevation: 2,
+    elevation: 999,
+    zIndex: 999,
   },
   message: {
     color: 'white',

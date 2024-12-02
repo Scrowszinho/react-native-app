@@ -3,9 +3,11 @@ import { api } from '..';
 import {
   TDeleteUser,
   TGetUsers,
+  TPatchUser,
   TPostNewUser,
   TUseDeleteUser,
   TUseGetUsers,
+  TUsePatchUser,
   TUsePostNewUser,
 } from './types';
 
@@ -24,7 +26,7 @@ export const useGetUsers: TUseGetUsers = (params) => {
 };
 
 export const postNewUser: TPostNewUser = async (data) => {
-  await api.put(`/users`, data);
+  await api.post(`/users`, data);
 };
 
 export const usePostNewUser: TUsePostNewUser = () => {
@@ -40,5 +42,15 @@ export const deleteUser: TDeleteUser = async (id) => {
 export const useDeleteNewUser: TUseDeleteUser = () => {
   return useMutation({
     mutationFn: deleteUser,
+  });
+};
+
+export const patchUser: TPatchUser = async ({ id, data }) => {
+  await api.patch(`/users/${id}`), data;
+};
+
+export const usePatchUser: TUsePatchUser = () => {
+  return useMutation({
+    mutationFn: patchUser,
   });
 };
