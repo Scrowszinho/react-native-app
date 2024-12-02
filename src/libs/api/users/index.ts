@@ -13,7 +13,10 @@ import {
 
 export const getUsers: TGetUsers = async (params) => {
   const { data } = await api.get('/users', {
-    params,
+    params: {
+      limit: params.limit,
+      page: params.page + 1,
+    },
   });
   return data;
 };

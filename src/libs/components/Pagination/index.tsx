@@ -16,7 +16,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
 }) => {
   const totalPages = Math.ceil(count / limit);
-  const maxVisibleButtons = 5;
+  const maxVisibleButtons = 4;
   const currentPageBlock = Math.floor(page / maxVisibleButtons);
 
   const startPage = currentPageBlock * maxVisibleButtons;

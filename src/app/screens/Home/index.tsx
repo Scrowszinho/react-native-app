@@ -26,7 +26,7 @@ export const Home: React.FC = () => {
       option: 2,
     },
   });
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [openDrawer, setOpenDrawer] = useState(false);
   const limit = watch('option');
 
@@ -37,7 +37,7 @@ export const Home: React.FC = () => {
 
   useEffect(() => {
     if (limit) {
-      setPage(1);
+      setPage(0);
     }
   }, [limit]);
 
