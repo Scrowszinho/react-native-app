@@ -71,7 +71,7 @@ export const BottomDrawerForm: React.FC<BottomDrawerFormProps> = ({
         onError: (err) => Snackbar.showSnackbar(err.message, 30000, 'error'),
         onSuccess: () => {
           Snackbar.showSnackbar(
-            'Usuário deletado com sucesso',
+            'Usuário alterado com sucesso',
             30000,
             'success',
           );
@@ -92,11 +92,7 @@ export const BottomDrawerForm: React.FC<BottomDrawerFormProps> = ({
       {
         onError: (err) => Snackbar.showSnackbar(err.message, 30000, 'error'),
         onSuccess: () => {
-          Snackbar.showSnackbar(
-            'Usuário deletado com sucesso',
-            30000,
-            'success',
-          );
+          Snackbar.showSnackbar('Usuário criado com sucesso', 30000, 'success');
           onClose(true);
         },
       },
